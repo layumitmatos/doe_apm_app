@@ -10,18 +10,13 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Perfil'),
-        backgroundColor: Colors.purple[700],
-        foregroundColor: Colors.white,
-      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
             _buildProfileHeader(),
             const SizedBox(height: 30),
-            _buildAboutAppSection(context),
+            _buildActionsSection(context),
           ],
         ),
       ),
@@ -37,7 +32,7 @@ class ProfilePage extends StatelessWidget {
           width: 80,
           height: 80,
           decoration: BoxDecoration(
-            color: Colors.purple[500],
+            color: const Color.fromARGB(255, 1, 28, 90),
             shape: BoxShape.circle,
           ),
           child: const Center(
@@ -59,7 +54,7 @@ class ProfilePage extends StatelessWidget {
           style: TextStyle(
             fontSize: 22,
             fontWeight: FontWeight.bold,
-            color: Colors.black87,
+            color: Color.fromARGB(255, 1, 28, 90),
           ),
         ),
         const SizedBox(height: 5),
@@ -69,7 +64,7 @@ class ProfilePage extends StatelessWidget {
           'Membro da APM',
           style: TextStyle(
             fontSize: 16,
-            color: Colors.purple,
+            color: Color.fromRGBO(155, 205, 255, 1),
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -89,13 +84,13 @@ class ProfilePage extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Row(
         children: [
-          Icon(icon, size: 20, color: Colors.grey[600]),
+          Icon(icon, size: 20, color: const Color.fromRGBO(155, 205, 255, 1)),
           const SizedBox(width: 10),
           Text(
             text,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 16,
-              color: Colors.grey[700],
+              color: Color.fromARGB(255, 1, 28, 90),
             ),
           ),
         ],
@@ -103,7 +98,7 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  Widget _buildAboutAppSection(BuildContext context) {
+  Widget _buildActionsSection(BuildContext context) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(20),
@@ -113,36 +108,7 @@ class ProfilePage extends StatelessWidget {
         border: Border.all(color: Colors.grey[200]!),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Sobre o aplicativo',
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: Colors.purple,
-            ),
-          ),
-          const SizedBox(height: 15),
-          Text(
-            'O DOE APM é um aplicativo desenvolvido para facilitar o acompanhamento das doações e arrecadações da Associação de Pais e Mestres.',
-            style: TextStyle(
-              fontSize: 16,
-              color: Colors.grey[700],
-              height: 1.5,
-            ),
-          ),
-          const SizedBox(height: 10),
-           Text(
-            'Através dele, você pode visualizar suas contribuições e acompanhar como os recursos são utilizados para melhorar a educação em nossa escola.',
-            style: TextStyle(
-              fontSize: 16,
-              color: Colors.grey[700],
-              height: 1.5,
-            ),
-          ),
-          const SizedBox(height: 25),
-          
           // Botão Voltar ao Início
           SizedBox(
             width: double.infinity,
@@ -155,7 +121,7 @@ class ProfilePage extends StatelessWidget {
                 );
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.purple,
+                backgroundColor: const Color.fromARGB(255, 1, 28, 90),
                 foregroundColor: Colors.white,
                 padding: const EdgeInsets.symmetric(vertical: 15),
                 shape: RoundedRectangleBorder(
@@ -208,7 +174,12 @@ class ProfilePage extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Sair do aplicativo'),
+          title: const Text(
+            'Sair do aplicativo',
+            style: TextStyle(
+              color: Color.fromARGB(255, 1, 28, 90),
+            ),
+          ),
           content: const Text('Tem certeza que deseja sair do aplicativo?'),
           actions: [
             TextButton(

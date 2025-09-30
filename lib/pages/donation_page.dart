@@ -57,11 +57,7 @@ class DonationsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Minhas Doações'),
-        backgroundColor: Colors.green[700],
-        foregroundColor: Colors.white,
-      ),
+    
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(

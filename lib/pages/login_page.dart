@@ -8,8 +8,49 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 
-// ↓↓↓ CLASSE STATE SEPARADA ↓↓↓
 class _LoginPageState extends State<LoginPage> {
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  
+  void _login() {
+    String email = _emailController.text.trim();
+    String password = _passwordController.text.trim();
+    
+    if (email.isEmpty && password.isEmpty) {
+      _showErrorDialog('Por favor, digite seu email e sua senha');
+    } else if (email.isEmpty) {
+      _showErrorDialog('Por favor, digite seu email');
+    } else if (password.isEmpty) {
+      _showErrorDialog('Por favor, digite sua senha');
+    } else {
+      // Se ambos os campos estão preenchidos, navega para HomePage
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage()),
+      );
+    }
+  }
+  
+  void _showErrorDialog(String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Atenção'),
+          content: Text(message),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,6 +89,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     const SizedBox(height: 20),
                     TextField(
+                      controller: _emailController,
                       decoration: InputDecoration(
                         hintText: 'Digite seu e-mail',
                         border: OutlineInputBorder(
@@ -59,6 +101,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     const SizedBox(height: 40),
                     TextField(
+                      controller: _passwordController,
                       decoration: InputDecoration(
                         hintText: 'Digite sua senha',
                         border: OutlineInputBorder(
@@ -71,19 +114,22 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     const SizedBox(height: 35),
                     GestureDetector(
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => HomePage()),
-                      ),
+                      onTap: _login,
                       child: Container(
                         decoration: BoxDecoration(
                           color: const Color.fromARGB(253, 83, 177, 249),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         padding: const EdgeInsets.all(20),
-                        child: const Text(
-                          'Continuar', 
-                          style: TextStyle(color: Colors.white)
+                        child: const Center(
+                          child: Text(
+                            'Continuar', 
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            )
+                          ),
                         ),
                       ),
                     ),

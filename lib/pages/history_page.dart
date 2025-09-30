@@ -70,11 +70,8 @@ class HistoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Histórico de Arrecadações'),
-        backgroundColor: Colors.blue[700],
-        foregroundColor: Colors.white,
-      ),
+      
+      
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(
