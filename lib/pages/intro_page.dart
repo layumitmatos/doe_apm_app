@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart'; 
 import 'login_page.dart';
 import 'home_page.dart';
+import 'profile_page.dart';
 
 class IntroPage extends StatelessWidget {
   const IntroPage({super.key}); 
